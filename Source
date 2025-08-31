@@ -1,0 +1,265 @@
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+
+local names = {
+    "pokemon", "dbz", "naruto", "bleach", "mha", "sao", "opm", "one piece", "tg", "aot",
+    "fairy tail", "dn", "fma", "ds", "spy family", "hxh", "csm", "black clover", "mob", "haikyu",
+    "jjk", "a silent voice", "blue lock", "erased", "jojo", "sg", "eva", "sds", "cg", "konosuba",
+    "bb", "cote", "tbhk", "noragami", "toradora", "tr", "baki", "fage", "gintama", "future diary",
+    "se", "ylia", "clannad", "cb", "akira", "spirited away", "ac", "inuyasha", "anohana", "oshi no ko",
+    "klk", "samurai", "rent a gf", "rezero", "great pretender", "fw", "monogatari", "bocchi the rock",
+    "madoka magica", "komi san", "bsd", "berserk", "ve", "cyberpunk", "tomodachi game", "tpn",
+    "the god of high school", "beastars", "love is war", "hajime no ippo", "vinland", "shield hero",
+    "dragon maid", "dr stone", "monster", "bb", "tog", "oregairu", "slime", "nichijou", "wonder egg",
+    "yona", "nhk", "free", "mushoku tensei", "86", "mia", "kingdom", "ousama ranking", "wwy", "blend s",
+    "initial d", "bl", "given", "fruits basket", "lain", "dororo", "log horizon", "devilman",
+    "sono bisque doll", "horimiya", "your name", "k on", "dp", "to your eternity", "sk8", "gto", "sm",
+    "yuyu hakusho", "ngnl", "parasyte", "call of the night", "ab", "fire force", "gurren lagan",
+    "relife", "maid sama", "kuroko no basket", "saiki", "terror in resonance", "hellsing", "flcl", "pp",
+    "durarara", "owari no seraph", "banana fish", "gits", "kakegurui", "overlord", "quintessential quintuplets",
+    "gs", "lucky star", "chihayafuru", "kyoukai no kanata", "yuru camp", "deadman wonderland", "charlotte",
+    "dorohedoro", "bgs", "chuunibyou", "hyouka", "hinamatsuri", "ditf", "be", "akame ga kill", "another",
+    "nagatoro", "part timer", "elfen lied", "howl", "ponyo", "guilty crown", "the irregular at magic high school",
+    "magi", "perfect blue", "jigokuraku", "danmachi", "gokushufudou", "mononoke hime"
+}
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AnimeHub"
+ScreenGui.Parent = Player.PlayerGui
+ScreenGui.ResetOnSpawn = false
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Size = UDim2.new(0, 250, 0, 150)
+MainFrame.Position = UDim2.new(0.5, -125, 0.5, -75)
+MainFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Parent = ScreenGui
+
+local TitleBar = Instance.new("Frame")
+TitleBar.Name = "TitleBar"
+TitleBar.Size = UDim2.new(1, 0, 0, 20)
+TitleBar.Position = UDim2.new(0, 0, 0, 0)
+TitleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TitleBar.BorderSizePixel = 0
+TitleBar.Parent = MainFrame
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Size = UDim2.new(0.8, 0, 1, 0)
+Title.Position = UDim2.new(0, 5, 0, 0)
+Title.BackgroundTransparency = 1
+Title.Text = "Guess the anime! Hub"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Font = Enum.Font.Gotham
+Title.TextSize = 12
+Title.Parent = TitleBar
+
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Name = "MinimizeButton"
+MinimizeButton.Size = UDim2.new(0, 20, 0, 20)
+MinimizeButton.Position = UDim2.new(1, -20, 0, 0)
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MinimizeButton.BorderSizePixel = 0
+MinimizeButton.Text = "_"
+MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeButton.Font = Enum.Font.GothamBold
+MinimizeButton.TextSize = 14
+MinimizeButton.Parent = TitleBar
+
+local ContentFrame = Instance.new("Frame")
+ContentFrame.Name = "ContentFrame"
+ContentFrame.Size = UDim2.new(1, 0, 1, -20)
+ContentFrame.Position = UDim2.new(0, 0, 0, 20)
+ContentFrame.BackgroundTransparency = 1
+ContentFrame.Parent = MainFrame
+
+local CurrentName = Instance.new("TextLabel")
+CurrentName.Name = "CurrentName"
+CurrentName.Size = UDim2.new(1, -10, 0.6, -10)
+CurrentName.Position = UDim2.new(0, 5, 0, 5)
+CurrentName.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+CurrentName.BorderSizePixel = 0
+CurrentName.Text = names[1]
+CurrentName.TextColor3 = Color3.fromRGB(255, 255, 255)
+CurrentName.Font = Enum.Font.Gotham
+CurrentName.TextSize = 16
+CurrentName.TextWrapped = true
+CurrentName.Parent = ContentFrame
+
+local ButtonsFrame = Instance.new("Frame")
+ButtonsFrame.Name = "ButtonsFrame"
+ButtonsFrame.Size = UDim2.new(1, -10, 0.4, -10)
+ButtonsFrame.Position = UDim2.new(0, 5, 0.6, 5)
+ButtonsFrame.BackgroundTransparency = 1
+ButtonsFrame.Parent = ContentFrame
+
+local LeftButton = Instance.new("TextButton")
+LeftButton.Name = "LeftButton"
+LeftButton.Size = UDim2.new(0.25, 0, 1, 0)
+LeftButton.Position = UDim2.new(0, 0, 0, 0)
+LeftButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+LeftButton.BorderSizePixel = 0
+LeftButton.Text = "<"
+LeftButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+LeftButton.Font = Enum.Font.GothamBold
+LeftButton.TextSize = 16
+LeftButton.Parent = ButtonsFrame
+
+local CopyButton = Instance.new("TextButton")
+CopyButton.Name = "CopyButton"
+CopyButton.Size = UDim2.new(0.25, 0, 1, 0)
+CopyButton.Position = UDim2.new(0.25, 0, 0, 0)
+CopyButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+CopyButton.BorderSizePixel = 0
+CopyButton.Text = "Copy"
+CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CopyButton.Font = Enum.Font.Gotham
+CopyButton.TextSize = 14
+CopyButton.Parent = ButtonsFrame
+
+local SkipButton = Instance.new("TextButton")
+SkipButton.Name = "SkipButton"
+SkipButton.Size = UDim2.new(0.25, 0, 1, 0)
+SkipButton.Position = UDim2.new(0.5, 0, 0, 0)
+SkipButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+SkipButton.BorderSizePixel = 0
+SkipButton.Text = "Skip"
+SkipButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SkipButton.Font = Enum.Font.Gotham
+SkipButton.TextSize = 14
+SkipButton.Parent = ButtonsFrame
+
+local RightButton = Instance.new("TextButton")
+RightButton.Name = "RightButton"
+RightButton.Size = UDim2.new(0.25, 0, 1, 0)
+RightButton.Position = UDim2.new(0.75, 0, 0, 0)
+RightButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+RightButton.BorderSizePixel = 0
+RightButton.Text = ">"
+RightButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+RightButton.Font = Enum.Font.GothamBold
+RightButton.TextSize = 16
+RightButton.Parent = ButtonsFrame
+
+local currentIndex = 1
+local isMinimized = false
+local minimizedSize = UDim2.new(0, 250, 0, 20)
+local normalSize = UDim2.new(0, 250, 0, 150)
+
+local function updateName()
+    CurrentName.Text = names[currentIndex]
+end
+
+local function nextName()
+    currentIndex = currentIndex + 1
+    if currentIndex > #names then
+        currentIndex = 1
+    end
+    updateName()
+end
+
+local function prevName()
+    currentIndex = currentIndex - 1
+    if currentIndex < 1 then
+        currentIndex = #names
+    end
+    updateName()
+end
+
+local function copyToClipboard()
+    setclipboard(tostring(names[currentIndex]))
+end
+
+local function skipStage()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local SkipStage = ReplicatedStorage.Events.SkipStage
+    SkipStage:FireServer()
+    nextName()
+end
+
+local function toggleMinimize()
+    if isMinimized then
+        MainFrame.Size = normalSize
+        ContentFrame.Visible = true
+        isMinimized = false
+    else
+        MainFrame.Size = minimizedSize
+        ContentFrame.Visible = false
+        isMinimized = true
+    end
+end
+
+LeftButton.MouseButton1Click:Connect(prevName)
+RightButton.MouseButton1Click:Connect(nextName)
+CopyButton.MouseButton1Click:Connect(copyToClipboard)
+SkipButton.MouseButton1Click:Connect(skipStage)
+MinimizeButton.MouseButton1Click:Connect(toggleMinimize)
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TextChatService = game:GetService("TextChatService")
+
+if TextChatService then
+    local function onMessageReceived(message)
+        if message.TextSource then
+            local player = game.Players:GetPlayerByUserId(message.TextSource.UserId)
+            if player == Player then
+                local cleanedMessage = string.gsub(message.Text, "%s+", ""):lower()
+                local currentNameLower = names[currentIndex]:gsub("%s+", ""):lower()
+                
+                if cleanedMessage == currentNameLower then
+                    nextName()
+                    
+                    local originalColor = CurrentName.BackgroundColor3
+                    CurrentName.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+                    task.wait(0.3)
+                    CurrentName.BackgroundColor3 = originalColor
+                end
+            end
+        end
+    end
+
+    TextChatService.OnIncomingMessage = onMessageReceived
+else
+    local function onPlayerChatted(player, message)
+        if player == Player then
+            local cleanedMessage = string.gsub(message, "%s+", ""):lower()
+            local currentNameLower = names[currentIndex]:gsub("%s+", ""):lower()
+            
+            if cleanedMessage == currentNameLower then
+                nextName()
+                
+                local originalColor = CurrentName.BackgroundColor3
+                CurrentName.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+                task.wait(0.3)
+                CurrentName.BackgroundColor3 = originalColor
+            end
+        end
+    end
+
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        player.Chatted:Connect(function(message)
+            onPlayerChatted(player, message)
+        end)
+    end
+
+    game.Players.PlayerAdded:Connect(function(player)
+        player.Chatted:Connect(function(message)
+            onPlayerChatted(player, message)
+        end)
+    end)
+end
+
+pcall(function()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "✅ Guess the anime! Hub Activated",
+        Text = "Made by thawabr • YouTube",
+        Duration = 8,
+        Button1 = "Close"
+    })
+end)
+
+print("Guess the anime! Hub loaded successfully!")
