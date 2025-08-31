@@ -175,9 +175,13 @@ local function copyToClipboard()
 end
 
 local function skipStage()
-    local ReplicatedStorage = game:GetService("ReplicatedStorage")
-    local SkipStage = ReplicatedStorage.Events.SkipStage
-    SkipStage:FireServer()
+    pcall(function()
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+        local SkipStage = ReplicatedStorage:FindFirstChild("Events") and ReplicatedStorage.Events:FindFirstChild("SkipStage")
+        if SkipStage then
+            SkipStage:FireServer()
+        end
+    end)
     nextName()
 end
 
