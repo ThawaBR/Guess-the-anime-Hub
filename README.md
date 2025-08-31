@@ -1,6 +1,6 @@
 ## Guess the Anime! Hub
 
-Test your anime knowledge by guessing names from our extensive collection.
+Shows the anime names currently displayed on your game screen.
 
 ## Features
 
