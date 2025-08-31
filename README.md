@@ -1,6 +1,6 @@
 ## Guess the Anime! Hub
 
-Test your anime knowledge by guessing names from a comprehensive list of popular anime series and movies.
+Test your anime knowledge by guessing names from our extensive collection.
 
 ## Features
 
