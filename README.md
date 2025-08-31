@@ -15,11 +15,11 @@ Test your anime knowledge by guessing names from a comprehensive list of popular
 
 ## Status
 
-· Version: 1.0.0
+- Version: 1.0.0
 
 ## Developers
 
-· Creator: ThawaBr
+- Creator: ThawaBr
 
 ## Contributing
 
