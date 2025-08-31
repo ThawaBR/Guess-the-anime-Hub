@@ -34,5 +34,5 @@ Any usage of this script requires giving proper credits to the creator.
 Copy and paste this code into your executor:
 
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ThawaBR/GuessTheAnimeHub/main/source"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThawaBR/Guess-the-anime-Hub/refs/heads/main/source"))()
 ```
