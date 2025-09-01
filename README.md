@@ -2,6 +2,13 @@
 
 Shows the anime names currently displayed on your game screen.
 
+## How to use
+
+Copy and paste this code into your executor:
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThawaBR/Guess-the-anime-Hub/refs/heads/main/source"))()
+```
 ## Features
 
 - Name Display: Shows one anime name at a time from a curated list of 150+ titles
@@ -28,11 +35,3 @@ Want to contribute? Open a pull request and if it checks out, we will merge it!
 Any usage of this script requires giving proper credits to the creator.
 
 ⚠️ Use this script at your own risk.
-
-## How to use
-
-Copy and paste this code into your executor:
-
-```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ThawaBR/Guess-the-anime-Hub/refs/heads/main/source"))()
-```
