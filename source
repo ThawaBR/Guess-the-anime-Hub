@@ -4,7 +4,7 @@ local names = {
     "pokemon", "dbz", "naruto", "bleach", "mha", "sao", "opm", "one piece", "tg", "aot",
     "fairy tail", "dn", "fma", "ds", "spy family", "hxh", "csm", "black clover", "mob", "haikyu",
     "jjk", "a silent voice", "blue lock", "erased", "jojo", "sg", "eva", "sds", "cg", "konosuba",
-    "bb", "cote", "tbhk", "noragami", "toradora", "tr", "baki", "fage", "gintama", "future diary",
+    "bb", "cote", "tbhk", "noragami", "toradora", "tr", "baki", "fate", "gintama", "future diary",
     "se", "ylia", "clannad", "cb", "akira", "spirited away", "ac", "inuyasha", "anohana", "oshi no ko",
     "klk", "samurai", "rent a gf", "rezero", "great pretender", "fw", "monogatari", "bocchi the rock",
     "madoka magica", "komi san", "bsd", "berserk", "ve", "cyberpunk", "tomodachi game", "tpn",
