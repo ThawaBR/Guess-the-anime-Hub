@@ -1,5 +1,4 @@
 local Player = game:GetService("Players").LocalPlayer
-local Mouse = Player:GetMouse()
 
 local names = {
     "pokemon", "dbz", "naruto", "bleach", "mha", "sao", "opm", "one piece", "tg", "aot",
@@ -109,17 +108,17 @@ LeftButton.Font = Enum.Font.GothamBold
 LeftButton.TextSize = 16
 LeftButton.Parent = ButtonsFrame
 
-local CopyButton = Instance.new("TextButton")
-CopyButton.Name = "CopyButton"
-CopyButton.Size = UDim2.new(0.25, 0, 1, 0)
-CopyButton.Position = UDim2.new(0.25, 0, 0, 0)
-CopyButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-CopyButton.BorderSizePixel = 0
-CopyButton.Text = "Copy"
-CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CopyButton.Font = Enum.Font.Gotham
-CopyButton.TextSize = 14
-CopyButton.Parent = ButtonsFrame
+local SayButton = Instance.new("TextButton")
+SayButton.Name = "SayButton"
+SayButton.Size = UDim2.new(0.25, 0, 1, 0)
+SayButton.Position = UDim2.new(0.25, 0, 0, 0)
+SayButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+SayButton.BorderSizePixel = 0
+SayButton.Text = "Say"
+SayButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SayButton.Font = Enum.Font.Gotham
+SayButton.TextSize = 14
+SayButton.Parent = ButtonsFrame
 
 local SkipButton = Instance.new("TextButton")
 SkipButton.Name = "SkipButton"
@@ -170,8 +169,20 @@ local function prevName()
     updateName()
 end
 
-local function copyToClipboard()
-    setclipboard(tostring(names[currentIndex]))
+local function sayInChat()
+    local currentName = names[currentIndex]
+    
+    pcall(function()
+        local TextChatService = game:GetService("TextChatService")
+        if TextChatService then
+            local channel = TextChatService.TextChannels.RBXGeneral
+            if channel then
+                channel:SendAsync(currentName)
+            end
+        else
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(currentName, "All")
+        end
+    end)
 end
 
 local function skipStage()
@@ -199,11 +210,10 @@ end
 
 LeftButton.MouseButton1Click:Connect(prevName)
 RightButton.MouseButton1Click:Connect(nextName)
-CopyButton.MouseButton1Click:Connect(copyToClipboard)
+SayButton.MouseButton1Click:Connect(sayInChat)
 SkipButton.MouseButton1Click:Connect(skipStage)
 MinimizeButton.MouseButton1Click:Connect(toggleMinimize)
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextChatService = game:GetService("TextChatService")
 
 if TextChatService then
@@ -216,11 +226,6 @@ if TextChatService then
                 
                 if cleanedMessage == currentNameLower then
                     nextName()
-                    
-                    local originalColor = CurrentName.BackgroundColor3
-                    CurrentName.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
-                    task.wait(0.3)
-                    CurrentName.BackgroundColor3 = originalColor
                 end
             end
         end
@@ -235,11 +240,6 @@ else
             
             if cleanedMessage == currentNameLower then
                 nextName()
-                
-                local originalColor = CurrentName.BackgroundColor3
-                CurrentName.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
-                task.wait(0.3)
-                CurrentName.BackgroundColor3 = originalColor
             end
         end
     end
