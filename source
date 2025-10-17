@@ -1,4 +1,5 @@
 local Player = game:GetService("Players").LocalPlayer
+local UserInputService = game:GetService("UserInputService")
 
 local names = {
     "pokemon", "dbz", "naruto", "bleach", "mha", "sao", "opm", "one piece", "tg", "aot",
@@ -213,6 +214,18 @@ RightButton.MouseButton1Click:Connect(nextName)
 SayButton.MouseButton1Click:Connect(sayInChat)
 SkipButton.MouseButton1Click:Connect(skipStage)
 MinimizeButton.MouseButton1Click:Connect(toggleMinimize)
+
+local function onKeyPress(input, gameProcessed)
+    if gameProcessed then return end
+    
+    if input.KeyCode == Enum.KeyCode.E then
+        sayInChat()
+    elseif input.KeyCode == Enum.KeyCode.Q then
+        skipStage()
+    end
+end
+
+UserInputService.InputBegan:Connect(onKeyPress)
 
 local TextChatService = game:GetService("TextChatService")
 
