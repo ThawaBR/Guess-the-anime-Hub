@@ -21,7 +21,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ThawaBR/Guess-the-ani
 
 ## Status
 
-- Version: 1.1.0
+- Version: 1.1.1
 
 ## Developers
 
